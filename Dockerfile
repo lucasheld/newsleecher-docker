@@ -35,6 +35,11 @@ RUN set -x \
     && while ps | grep -v grep | grep -qw Xvfb; do sleep 1; done \
     # modify wine to run newsleecher
     && winetricks winxp \
-    && winetricks dxvk
+    && winetricks dxvk \
+    # cleanup
+    && apt-get remove -yq wget cabextract \
+    && apt-get -q clean \
+    && rm -fr /var/lib/apt/lists/* /var/log/dpkg.log /var/log/alternatives.log /var/log/apt/* \
+    && rm -fr /tmp/*
 
 COPY rootfs/ /
