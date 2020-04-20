@@ -42,4 +42,9 @@ RUN set -x \
     && rm -fr /var/lib/apt/lists/* /var/log/dpkg.log /var/log/alternatives.log /var/log/apt/* \
     && rm -fr /tmp/*
 
+# generate and install favicon
+RUN set -x \
+    && APP_ICON_URL=https://www.newsleecher.com/apple-touch-icon.png \
+    && install_app_icon.sh "$APP_ICON_URL"
+
 COPY rootfs/ /
