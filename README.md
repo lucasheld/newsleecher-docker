@@ -21,9 +21,14 @@ $ docker run -d \
     -p 5900:5900 \
     -e USER_ID=1000 \
     -e GROUP_ID=1000 \
-    -v /config-folder-path:"/wine/drive_c/users/app/Application Data/NewsLeecher" \
+    -v /path/to/storage:/storage \
+    -v /path/to/config:"/wine/drive_c/users/app/Application Data/NewsLeecher" \
     lucasheld/newsleecher
 ```
+
+The volume `/storage` can be used to store downloads or extracted .nzb files.
+
+The volume `/wine/drive_c/users/app/Application Data/NewsLeecher` contains NewsLeecher application data.
 
 ## Accessing the GUI
 
