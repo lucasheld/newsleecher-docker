@@ -46,10 +46,12 @@ RUN set -x \
     && rm -fr /var/lib/apt/lists/* /var/log/dpkg.log /var/log/alternatives.log /var/log/apt/* \
     && rm -fr /tmp/*
 
-# generate and install favicon
 RUN set -x \
+    # generate and install favicon
     && APP_ICON_URL=https://www.newsleecher.com/apple-touch-icon.png \
-    && install_app_icon.sh "$APP_ICON_URL"
+    && install_app_icon.sh "$APP_ICON_URL" \
+    # enable window decor to allow newsleecher restart
+    && sed-patch 's|<decor>no</decor>|<decor>yes</decor>|' /etc/xdg/openbox/rc.xml
 
 VOLUME [ "/config" ]
 VOLUME [ "/storage" ]
