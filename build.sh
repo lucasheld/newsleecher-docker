@@ -5,14 +5,14 @@ DOCKER_IMAGE_REPO="lucasheld/newsleecher"
 run_build() {
     STAGE=$1  # final or beta
 
-    echo "Building docker image..."
+    echo "Building $STAGE docker image..."
     if [ "$STAGE" = "final" ]
     then
         URL="https://www.newsleecher.com/nl_setup.exe"
     fi
     if [ "$STAGE" = "beta" ]
     then
-        URL="https://newsleecher.com/nl_setup_beta.exe"
+        URL="https://www.newsleecher.com/nl_setup_beta.exe"
     fi
     docker build \
         --no-cache \
@@ -44,7 +44,7 @@ run_build() {
     done
 
     docker logout
-    echo "Build done"
+    echo "Build $STAGE done"
 }
 
 # get current newsleecher versions
@@ -67,12 +67,12 @@ if echo $RESPONSE_DOCKER_TAGS | grep -E "\"${FINAL_VERSION}\""
 then
     echo "Skipping final build: Docker image with tag $FINAL_VERSION already exists."
 else
-    run_build final
+    run_build "final"
 fi
 # beta
 if echo $RESPONSE_DOCKER_TAGS | grep -E "\"${BETA_VERSION}\""
 then
     echo "Skipping beta build: Docker image with tag $BETA_VERSION already exists."
 else
-    run_build beta
+    run_build "beta"
 fi
