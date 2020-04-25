@@ -4,14 +4,6 @@ NewsLeecher is a binary Usenet client.
 
 ---
 
-## Build
-
-```
-$ git clone https://github.com/lucasheld/newsleecher-docker
-$ cd newsleecher-docker
-$ docker build -t lucasheld/newsleecher .
-```
-
 ## Usage
 
 ```
