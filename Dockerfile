@@ -3,7 +3,7 @@ FROM jlesage/baseimage-gui:ubuntu-18.04
 # current final: https://www.newsleecher.com/nl_setup.exe
 # current beta: https://newsleecher.com/nl_setup_beta.exe
 # old releases: https://www.newsleecher.com/releases/
-ENV NEWSLEECHER_URL="https://newsleecher.com/nl_setup_beta.exe"
+ARG NEWSLEECHER_URL="https://www.newsleecher.com/nl_setup.exe"
 
 ENV \
     DEBIAN_FRONTEND=noninteractive \
